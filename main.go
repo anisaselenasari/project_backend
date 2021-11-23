@@ -7,5 +7,5 @@ import (
 //MAIN FUNCTION
 func main() {
 	config.InitDB()
-	e.Start(":8080")
+	// Start(":8080")
 }
