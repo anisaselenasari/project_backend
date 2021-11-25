@@ -1,13 +1,13 @@
 package middleware
 
 import (
-	"project_backend/config"
-	"project_backend/db"
+	"phone_review/config"
+	"phone_review/db"
 
 	"github.com/labstack/echo/v4"
 )
 
-func AuthDB(adminname, password string, c echo.Context) (bool, error) {
+func BasicAuthDB(adminname, password string, c echo.Context) (bool, error) {
 	var admin db.Admins
 
 	err := config.DB.Where("email = ? AND password = ?", adminname, password).First(&admin).Error

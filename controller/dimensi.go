@@ -38,8 +38,8 @@ func GetDimensiByID(c echo.Context) error {
 	})
 }
 
-//fungsi create new displays
-func Createdisplays(e echo.Context) error {
+//fungsi create new dimensi
+func CreatedDimensi(e echo.Context) error {
 	dimensi := db.Dimensi{}
 	e.Bind(&dimensi)
 
@@ -52,8 +52,8 @@ func Createdisplays(e echo.Context) error {
 	})
 }
 
-//Fungsi Update Tabel Displays
-func UpdateDisplaysByID(e echo.Context) error {
+//Fungsi Update Tabel Dimensi
+func UpdateDimensiByID(e echo.Context) error {
 	dimensi := db.Dimensi{}
 	e.Bind(&dimensi)
 
@@ -66,13 +66,13 @@ func UpdateDisplaysByID(e echo.Context) error {
 	})
 }
 
-//Fungsi hapus data displays
-func DeleteDimensiByID(e echo.Context) error {
+//Fungsi hapus data dimensi
+func DeletedDimensiByID(e echo.Context) error {
 	var dimensi db.Dimensi
 	id, _ := strconv.Atoi(e.Param("id"))
 	config.DB.Where("id = ?", id).Delete(&dimensi)
 	return e.JSON(http.StatusOK, map[string]interface{}{
-		"displays": dimensi,
-		"message":  "Data Berhasil Dihapus",
+		"dimensi": dimensi,
+		"message": "Data Berhasil Dihapus",
 	})
 }

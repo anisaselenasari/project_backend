@@ -67,12 +67,12 @@ func UpdateEksteriorByID(e echo.Context) error {
 }
 
 //Fungsi hapus data eksterior
-func DeletePerfomByID(e echo.Context) error {
-	var perfoms db.Performs
+func DeleteEksteriorByID(e echo.Context) error {
+	var eksterior db.Eksterior
 	id, _ := strconv.Atoi(e.Param("id"))
-	config.DB.Where("id = ?", id).Delete(&perfoms)
+	config.DB.Where("id = ?", id).Delete(&eksterior)
 	return e.JSON(http.StatusOK, map[string]interface{}{
-		"perfoms": perfoms,
-		"message": "Data Berhasil Dihapus",
+		"eksterior": eksterior,
+		"message":   "Data Berhasil Dihapus",
 	})
 }

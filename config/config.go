@@ -1,6 +1,8 @@
 package config
 
 import (
+	"project_backend/db"
+
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 )
@@ -13,14 +15,25 @@ func InitDB() {
 	if err != nil {
 		panic(err)
 	}
-	// 	initMigration()
+	initMigration()
 }
 
 var (
 	DB *gorm.DB
 )
 
-// func initMigration() {
-// 	DB.AutoMigrate(&db.Admins{}
-// 		)
-// }
+func initMigration() {
+	DB.AutoMigrate(
+		&db.Admins{},
+		&db.Descs{},
+		&db.Dimensi{},
+		&db.Eksterior{},
+		&db.Hiburan{},
+		&db.Kenyamanan{},
+		&db.Keselamatan{},
+		&db.Merks{},
+		&db.Mesin{},
+		&db.Performs{},
+		&db.Types{},
+	)
+}
