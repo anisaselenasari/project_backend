@@ -1,6 +1,6 @@
 package db
 
-type Desc struct {
+type Descs struct {
 	ID             int `json:"id" form:"id"`
 	Id_Type        int `json:"id_type" form:"id_type"`
 	Id_Kenyamanan  int `json:"id_kenyamanan" form:"id_kenyamanan"`

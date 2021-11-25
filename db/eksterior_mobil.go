@@ -1,6 +1,6 @@
 package db
 
-type Eksteriors struct {
+type Eksterior struct {
 	ID               int    `json:"id" form:"id"`
 	Lampu_KabutDepan string `json:"lampu_kabutdepan" form:"lampu_kabutdepan"`
 	Lampu_Depan      string `json:"lampu_depan" form:"lampu_depan"`
