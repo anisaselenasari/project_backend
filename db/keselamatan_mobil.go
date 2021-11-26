@@ -7,6 +7,3 @@ type Keselamatan struct {
 	Rearview_Camera              string `json:"rearview_camera" form:"rearview_camera"`
 	ElectronicBrake_Distribution string `json:"electronicbrake_distribution" form:"electronicbrake_distribution"`
 }
-
-// sebenernya masih bingung type datanya mau apa, boolean atau string
-// soalnya jawabannya cuma yes atau no

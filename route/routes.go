@@ -61,8 +61,8 @@ func New() *echo.Echo {
 	//CRUD Dimensi Mobil
 	e.GET("/dimensi", controller.GetDimensi)
 	e.GET("/dimensi/:id", controller.GetDimensiByID)
-	e.POST("/dimensi", controller.CreatedDimensi)
-	e.DELETE("/dimensi/:id", controller.DeletedDimensiByID)
+	e.POST("/dimensi", controller.CreateDimensi)
+	e.DELETE("/dimensi/:id", controller.DeleteDimensiByID)
 	e.PUT("dimensi/:id", controller.UpdateDimensiByID)
 
 	//CRUD Eksterior Mobil
@@ -89,7 +89,7 @@ func New() *echo.Echo {
 	//CRUD Keselamatan Mobil
 	e.GET("/keselamatan", controller.GetKeselamatan)
 	e.GET("/keselamatan/:id", controller.GetKeselamatanByID)
-	e.POST("/keselamatan", controller.CreatedKeselamatan)
+	e.POST("/keselamatan", controller.CreateKeselamatan)
 	e.DELETE("/keselamatan/:id", controller.DeleteKeselamatanByID)
 	e.PUT("/keselamatan/:id", controller.UpdateKeselamatanByID)
 

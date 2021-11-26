@@ -39,7 +39,7 @@ func GetKeselamatanByID(c echo.Context) error {
 }
 
 //fungsi create new keselamatan
-func CreatedKeselamatan(e echo.Context) error {
+func CreateKeselamatan(e echo.Context) error {
 	keselamatan := db.Keselamatan{}
 	e.Bind(&keselamatan)
 

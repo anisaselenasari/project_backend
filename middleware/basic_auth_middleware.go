@@ -1,8 +1,8 @@
 package middleware
 
 import (
-	"phone_review/config"
-	"phone_review/db"
+	"project_backend/config"
+	"project_backend/db"
 
 	"github.com/labstack/echo/v4"
 )

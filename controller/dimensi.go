@@ -39,7 +39,7 @@ func GetDimensiByID(c echo.Context) error {
 }
 
 //fungsi create new dimensi
-func CreatedDimensi(e echo.Context) error {
+func CreateDimensi(e echo.Context) error {
 	dimensi := db.Dimensi{}
 	e.Bind(&dimensi)
 
@@ -67,7 +67,7 @@ func UpdateDimensiByID(e echo.Context) error {
 }
 
 //Fungsi hapus data dimensi
-func DeletedDimensiByID(e echo.Context) error {
+func DeleteDimensiByID(e echo.Context) error {
 	var dimensi db.Dimensi
 	id, _ := strconv.Atoi(e.Param("id"))
 	config.DB.Where("id = ?", id).Delete(&dimensi)
