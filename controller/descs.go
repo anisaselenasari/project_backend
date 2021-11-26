@@ -57,7 +57,7 @@ func UpdateDescsByID(e echo.Context) error {
 	desc := db.Descs{}
 	e.Bind(&desc)
 
-	if err := config.DB.Updates(&desc).Where("id= ?", desc.ID).Error; err != nil {
+	if err := config.DB.Where("id= ?", desc.ID).Updates(&desc).Error; err != nil {
 		return echo.NewHTTPError(http.StatusBadRequest, err.Error())
 	}
 	return e.JSON(http.StatusOK, map[string]interface{}{

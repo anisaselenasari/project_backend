@@ -57,7 +57,7 @@ func UpdatKenyamananByID(e echo.Context) error {
 	kenyamanan := db.Kenyamanan{}
 	e.Bind(&kenyamanan)
 
-	if err := config.DB.Updates(&kenyamanan).Where("id= ?", kenyamanan.ID).Error; err != nil {
+	if err := config.DB.Where("id= ?", kenyamanan.ID).Updates(&kenyamanan).Error; err != nil {
 		return echo.NewHTTPError(http.StatusBadRequest, err.Error())
 	}
 	return e.JSON(http.StatusOK, map[string]interface{}{

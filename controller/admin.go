@@ -59,7 +59,7 @@ func UpdateAdminByID(e echo.Context) error {
 	admin := db.Admins{}
 	e.Bind(&admin)
 
-	if err := config.DB.Updates(&admin).Where("id= ?", admin.ID).Error; err != nil {
+	if err := config.DB.Where("id= ?", admin.ID).Updates(&admin).Error; err != nil {
 		return echo.NewHTTPError(http.StatusBadRequest, err.Error())
 	}
 	return e.JSON(http.StatusOK, map[string]interface{}{

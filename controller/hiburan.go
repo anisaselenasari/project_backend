@@ -57,7 +57,7 @@ func UpdateHiburanByID(e echo.Context) error {
 	hiburan := db.Hiburan{}
 	e.Bind(&hiburan)
 
-	if err := config.DB.Updates(&hiburan).Where("id= ?", hiburan.ID).Error; err != nil {
+	if err := config.DB.Where("id= ?", hiburan.ID).Updates(&hiburan).Error; err != nil {
 		return echo.NewHTTPError(http.StatusBadRequest, err.Error())
 	}
 	return e.JSON(http.StatusOK, map[string]interface{}{

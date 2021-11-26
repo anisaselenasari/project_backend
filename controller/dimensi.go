@@ -57,7 +57,7 @@ func UpdateDimensiByID(e echo.Context) error {
 	dimensi := db.Dimensi{}
 	e.Bind(&dimensi)
 
-	if err := config.DB.Updates(&dimensi).Where("id= ?", dimensi.ID).Error; err != nil {
+	if err := config.DB.Where("id= ?", dimensi.ID).Updates(&dimensi).Error; err != nil {
 		return echo.NewHTTPError(http.StatusBadRequest, err.Error())
 	}
 	return e.JSON(http.StatusOK, map[string]interface{}{

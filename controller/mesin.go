@@ -57,7 +57,7 @@ func UpdateMesinByID(e echo.Context) error {
 	mesin := db.Mesin{}
 	e.Bind(&mesin)
 
-	if err := config.DB.Updates(&mesin).Where("id= ?", mesin.ID).Error; err != nil {
+	if err := config.DB.Where("id= ?", mesin.ID).Updates(&mesin).Error; err != nil {
 		return echo.NewHTTPError(http.StatusBadRequest, err.Error())
 	}
 	return e.JSON(http.StatusOK, map[string]interface{}{

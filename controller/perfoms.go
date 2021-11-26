@@ -57,7 +57,7 @@ func UpdatePerfomsByID(e echo.Context) error {
 	perfoms := db.Performs{}
 	e.Bind(&perfoms)
 
-	if err := config.DB.Updates(&perfoms).Where("id= ?", perfoms.ID).Error; err != nil {
+	if err := config.DB.Where("id= ?", perfoms.ID).Updates(&perfoms).Error; err != nil {
 		return echo.NewHTTPError(http.StatusBadRequest, err.Error())
 	}
 	return e.JSON(http.StatusOK, map[string]interface{}{

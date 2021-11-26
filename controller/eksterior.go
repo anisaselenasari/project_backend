@@ -57,7 +57,7 @@ func UpdateEksteriorByID(e echo.Context) error {
 	eksterior := db.Eksterior{}
 	e.Bind(&eksterior)
 
-	if err := config.DB.Updates(&eksterior).Where("id= ?", eksterior.ID).Error; err != nil {
+	if err := config.DB.Where("id= ?", eksterior.ID).Updates(&eksterior).Error; err != nil {
 		return echo.NewHTTPError(http.StatusBadRequest, err.Error())
 	}
 	return e.JSON(http.StatusOK, map[string]interface{}{

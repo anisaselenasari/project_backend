@@ -2,13 +2,12 @@ package main
 
 import (
 	"project_backend/config"
-
-	"github.com/labstack/echo"
+	"project_backend/route"
 )
 
 //MAIN FUNCTION
 func main() {
 	config.InitDB()
-	e := echo.New()
-	e.Start(":8080")
+	e := route.New()
+	e.Start(":8181")
 }

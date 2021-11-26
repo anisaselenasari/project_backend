@@ -57,7 +57,7 @@ func UpdateMerkByID(e echo.Context) error {
 	merk := db.Merks{}
 	e.Bind(&merk)
 
-	if err := config.DB.Updates(&merk).Where("id= ?", merk.ID).Error; err != nil {
+	if err := config.DB.Where("id= ?", merk.ID).Updates(&merk).Error; err != nil {
 		return echo.NewHTTPError(http.StatusBadRequest, err.Error())
 	}
 	return e.JSON(http.StatusOK, map[string]interface{}{

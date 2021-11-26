@@ -57,7 +57,7 @@ func UpdateTypeByID(e echo.Context) error {
 	tipe := db.Types{}
 	e.Bind(&tipe)
 
-	if err := config.DB.Updates(&tipe).Where("id= ?", tipe.ID).Error; err != nil {
+	if err := config.DB.Where("id= ?", tipe.ID).Updates(&tipe).Error; err != nil {
 		return echo.NewHTTPError(http.StatusBadRequest, err.Error())
 	}
 	return e.JSON(http.StatusOK, map[string]interface{}{
