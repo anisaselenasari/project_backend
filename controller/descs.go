@@ -18,7 +18,7 @@ func GetDescs(c echo.Context) error {
 		return echo.NewHTTPError(http.StatusBadRequest, err.Error())
 	}
 	return c.JSON(http.StatusOK, map[string]interface{}{
-		"message": "Berhasil Menampilkan Semua Data Deskripsi Smartphone",
+		"message": "Berhasil Menampilkan Semua Data Deskripsi Mobil",
 		"descs":   desc,
 	})
 }
@@ -33,7 +33,7 @@ func GetDescsByID(c echo.Context) error {
 		return echo.NewHTTPError(http.StatusBadRequest, err.Error())
 	}
 	return c.JSON(http.StatusOK, map[string]interface{}{
-		"message": "Berhasil Menampilkan Deskripsi Smartphone ",
+		"message": "Berhasil Menampilkan Deskripsi Mobil ",
 		"descs":   desc,
 	})
 }
@@ -47,7 +47,7 @@ func CreateDescs(e echo.Context) error {
 		return echo.NewHTTPError(http.StatusBadRequest, err.Error())
 	}
 	return e.JSON(http.StatusOK, map[string]interface{}{
-		"message": "success menambahkan data deskripsi",
+		"message": "success menambahkan data deskripsi mobil",
 		"descs":   desc,
 	})
 }
@@ -61,7 +61,7 @@ func UpdateDescsByID(e echo.Context) error {
 		return echo.NewHTTPError(http.StatusBadRequest, err.Error())
 	}
 	return e.JSON(http.StatusOK, map[string]interface{}{
-		"message": "Berhasil Mengubah Data Deskripsi",
+		"message": "Berhasil Mengubah Data Deskripsi mobil",
 		"descs":   desc,
 	})
 }
