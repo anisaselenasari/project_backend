@@ -57,7 +57,9 @@ func CreateAdminController(e echo.Context) error {
 
 func UpdateAdminByID(e echo.Context) error {
 	admin := db.Admins{}
+	id, _ := strconv.Atoi(e.Param("id"))
 	e.Bind(&admin)
+	admin.ID = id
 
 	if err := config.DB.Where("id= ?", admin.ID).Updates(&admin).Error; err != nil {
 		return echo.NewHTTPError(http.StatusBadRequest, err.Error())

@@ -55,7 +55,9 @@ func CreateDescs(e echo.Context) error {
 //Fungsi Update Tabel Deskripsi
 func UpdateDescsByID(e echo.Context) error {
 	desc := db.Descs{}
+	id, _ := strconv.Atoi(e.Param("id"))
 	e.Bind(&desc)
+	desc.ID = id
 
 	if err := config.DB.Where("id= ?", desc.ID).Updates(&desc).Error; err != nil {
 		return echo.NewHTTPError(http.StatusBadRequest, err.Error())

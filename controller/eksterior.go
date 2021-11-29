@@ -55,8 +55,9 @@ func CreateEksterior(e echo.Context) error {
 //Fungsi Update Tabel Eksterior
 func UpdateEksteriorByID(e echo.Context) error {
 	eksterior := db.Eksterior{}
+	id, _ := strconv.Atoi(e.Param("id"))
 	e.Bind(&eksterior)
-
+	eksterior.ID = id
 	if err := config.DB.Where("id= ?", eksterior.ID).Updates(&eksterior).Error; err != nil {
 		return echo.NewHTTPError(http.StatusBadRequest, err.Error())
 	}

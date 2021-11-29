@@ -55,7 +55,9 @@ func CreateKeselamatan(e echo.Context) error {
 //Fungsi Update Tabel Keselamatan
 func UpdateKeselamatanByID(e echo.Context) error {
 	keselamatan := db.Keselamatan{}
+	id, _ := strconv.Atoi(e.Param("id"))
 	e.Bind(&keselamatan)
+	keselamatan.ID = id
 
 	if err := config.DB.Where("id= ?", keselamatan.ID).Updates(&keselamatan).Error; err != nil {
 		return echo.NewHTTPError(http.StatusBadRequest, err.Error())

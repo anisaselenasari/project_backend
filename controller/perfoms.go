@@ -55,7 +55,9 @@ func CreatePerfoms(e echo.Context) error {
 //Fungsi Update Tabel Perfoms
 func UpdatePerfomsByID(e echo.Context) error {
 	perfoms := db.Performs{}
+	id, _ := strconv.Atoi(e.Param("id"))
 	e.Bind(&perfoms)
+	perfoms.ID = id
 
 	if err := config.DB.Where("id= ?", perfoms.ID).Updates(&perfoms).Error; err != nil {
 		return echo.NewHTTPError(http.StatusBadRequest, err.Error())

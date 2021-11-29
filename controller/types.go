@@ -55,7 +55,9 @@ func CreateType(e echo.Context) error {
 //Fungsi Update Tabel Merk HP
 func UpdateTypeByID(e echo.Context) error {
 	tipe := db.Types{}
+	id, _ := strconv.Atoi(e.Param("id"))
 	e.Bind(&tipe)
+	tipe.ID = id
 
 	if err := config.DB.Where("id= ?", tipe.ID).Updates(&tipe).Error; err != nil {
 		return echo.NewHTTPError(http.StatusBadRequest, err.Error())

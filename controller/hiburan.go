@@ -55,7 +55,9 @@ func CreateHiburan(e echo.Context) error {
 //Fungsi Update Tabel Hiburan
 func UpdateHiburanByID(e echo.Context) error {
 	hiburan := db.Hiburan{}
+	id, _ := strconv.Atoi(e.Param("id"))
 	e.Bind(&hiburan)
+	hiburan.ID = id
 
 	if err := config.DB.Where("id= ?", hiburan.ID).Updates(&hiburan).Error; err != nil {
 		return echo.NewHTTPError(http.StatusBadRequest, err.Error())

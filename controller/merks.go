@@ -55,7 +55,9 @@ func CreateMerk(e echo.Context) error {
 //Fungsi Update Tabel Merk HP
 func UpdateMerkByID(e echo.Context) error {
 	merk := db.Merks{}
+	id, _ := strconv.Atoi(e.Param("id"))
 	e.Bind(&merk)
+	merk.ID = id
 
 	if err := config.DB.Where("id= ?", merk.ID).Updates(&merk).Error; err != nil {
 		return echo.NewHTTPError(http.StatusBadRequest, err.Error())

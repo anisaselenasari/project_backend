@@ -55,7 +55,9 @@ func CreateDimensi(e echo.Context) error {
 //Fungsi Update Tabel Dimensi
 func UpdateDimensiByID(e echo.Context) error {
 	dimensi := db.Dimensi{}
+	id, _ := strconv.Atoi(e.Param("id"))
 	e.Bind(&dimensi)
+	dimensi.ID = id
 
 	if err := config.DB.Where("id= ?", dimensi.ID).Updates(&dimensi).Error; err != nil {
 		return echo.NewHTTPError(http.StatusBadRequest, err.Error())

@@ -55,7 +55,9 @@ func CreateKenyamanan(e echo.Context) error {
 //Fungsi Update Tabel Kenyamanan
 func UpdatKenyamananByID(e echo.Context) error {
 	kenyamanan := db.Kenyamanan{}
+	id, _ := strconv.Atoi(e.Param("id"))
 	e.Bind(&kenyamanan)
+	kenyamanan.ID = id
 
 	if err := config.DB.Where("id= ?", kenyamanan.ID).Updates(&kenyamanan).Error; err != nil {
 		return echo.NewHTTPError(http.StatusBadRequest, err.Error())

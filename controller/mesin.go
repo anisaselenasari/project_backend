@@ -55,7 +55,9 @@ func CreateMesin(e echo.Context) error {
 //Fungsi Update Tabel mesin
 func UpdateMesinByID(e echo.Context) error {
 	mesin := db.Mesin{}
+	id, _ := strconv.Atoi(e.Param("id"))
 	e.Bind(&mesin)
+	mesin.ID = id
 
 	if err := config.DB.Where("id= ?", mesin.ID).Updates(&mesin).Error; err != nil {
 		return echo.NewHTTPError(http.StatusBadRequest, err.Error())
