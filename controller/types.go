@@ -17,6 +17,13 @@ func GetTypes(c echo.Context) error {
 	if err := config.DB.Find(&types).Error; err != nil {
 		return echo.NewHTTPError(http.StatusBadRequest, err.Error())
 	}
+	for i, value := range types {
+		var merks db.Merks
+		if err := config.DB.Where("id= ?", value.Id_Merk).First(&merks).Error; err == nil {
+			types[i].Merk = merks.Merk
+		}
+	}
+
 	return c.JSON(http.StatusOK, map[string]interface{}{
 		"message": "Berhasil Menampilkan Semua Tipe Mobil",
 		"types":   types,

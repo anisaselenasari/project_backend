@@ -40,41 +40,41 @@ func GetMerksByID(c echo.Context) error {
 
 //fungsi create new admins
 func CreateMerk(e echo.Context) error {
-	merk := db.Merks{}
-	e.Bind(&merk)
+	merks := db.Merks{}
+	e.Bind(&merks)
 
-	if err := config.DB.Save(&merk).Error; err != nil {
+	if err := config.DB.Save(&merks).Error; err != nil {
 		return echo.NewHTTPError(http.StatusBadRequest, err.Error())
 	}
 	return e.JSON(http.StatusOK, map[string]interface{}{
 		"message": "success menambahkan merks  mobil",
-		"merk":    merk,
+		"merks":   merks,
 	})
 }
 
 //Fungsi Update Tabel Merk HP
 func UpdateMerkByID(e echo.Context) error {
-	merk := db.Merks{}
+	merks := db.Merks{}
 	id, _ := strconv.Atoi(e.Param("id"))
-	e.Bind(&merk)
-	merk.ID = id
+	e.Bind(&merks)
+	merks.ID = id
 
-	if err := config.DB.Where("id= ?", merk.ID).Updates(&merk).Error; err != nil {
+	if err := config.DB.Where("id= ?", merks.ID).Updates(&merks).Error; err != nil {
 		return echo.NewHTTPError(http.StatusBadRequest, err.Error())
 	}
 	return e.JSON(http.StatusOK, map[string]interface{}{
 		"message": "Berhasil Mengubah Data merks",
-		"merk":    merk,
+		"merks":   merks,
 	})
 }
 
 //Fungsi hapus data merk
 func DeleteMerkByID(e echo.Context) error {
-	var merk db.Merks
+	var merks db.Merks
 	id, _ := strconv.Atoi(e.Param("id"))
-	config.DB.Where("id = ?", id).Delete(&merk)
+	config.DB.Where("id = ?", id).Delete(&merks)
 	return e.JSON(http.StatusOK, map[string]interface{}{
-		"merk":    merk,
+		"merks":   merks,
 		"message": "Data Berhasil Dihapus",
 	})
 }
