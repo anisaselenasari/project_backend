@@ -2,7 +2,7 @@ package db
 
 type Descs struct {
 	ID             int `json:"id" form:"id"`
-	Id_Type        int `json:"id_type" form:"id_type"`
+	Id_Types       int `json:"id_types" form:"id_types"`
 	Id_Kenyamanan  int `json:"id_kenyamanan" form:"id_kenyamanan"`
 	Id_Keselamatan int `json:"id_keselamatan" form:"id_keselamatan"`
 	Id_Eksterior   int `json:"id_eksterior" form:"id_eksterior"`

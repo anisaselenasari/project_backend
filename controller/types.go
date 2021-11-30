@@ -10,7 +10,7 @@ import (
 	"github.com/labstack/echo/v4"
 )
 
-//func memanggil seluruh data admin
+//func memanggil seluruh data types
 func GetTypes(c echo.Context) error {
 	var types []db.Types
 
