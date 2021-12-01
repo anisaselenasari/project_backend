@@ -45,7 +45,7 @@ func GetTypesByID(c echo.Context) error {
 	})
 }
 
-//fungsi create new admins
+//fungsi create new type
 func CreateType(e echo.Context) error {
 	tipe := db.Types{}
 	e.Bind(&tipe)
@@ -53,6 +53,7 @@ func CreateType(e echo.Context) error {
 	if err := config.DB.Save(&tipe).Error; err != nil {
 		return echo.NewHTTPError(http.StatusBadRequest, err.Error())
 	}
+
 	return e.JSON(http.StatusOK, map[string]interface{}{
 		"message": "Berhasil menambahkan tipe mobil",
 		"tipe":    tipe,

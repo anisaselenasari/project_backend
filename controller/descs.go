@@ -17,6 +17,7 @@ func GetDescs(c echo.Context) error {
 	if err := config.DB.Find(&desc).Error; err != nil {
 		return echo.NewHTTPError(http.StatusBadRequest, err.Error())
 	}
+
 	return c.JSON(http.StatusOK, map[string]interface{}{
 		"message": "Berhasil Menampilkan Semua Data Deskripsi Mobil",
 		"descs":   desc,

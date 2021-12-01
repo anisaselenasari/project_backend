@@ -1,7 +1,7 @@
 package config
 
 import (
-	"project_backend/db"
+	db "project_backend/db"
 
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
