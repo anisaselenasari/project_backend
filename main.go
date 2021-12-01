@@ -7,7 +7,7 @@ import (
 
 //MAIN FUNCTION
 func main() {
-	config.InitDB()
+	config.InitDB("review_mobil")
 	e := route.New()
 	e.Start(":8181")
 }
